@@ -1,0 +1,19 @@
+[Unit]
+Description=uWSGI Environment for FOLDERNAME
+After=network.target
+
+[Service]
+ExecStart=/opt/FOLDERNAME/ENV/bin/gunicorn --bind unix:FOLDERNAME.sock app:app 
+WorkingDirectory=/opt/FOLDERNAME
+User=nobody
+Group=nobody
+Restart=always
+
+# Harden the service
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
