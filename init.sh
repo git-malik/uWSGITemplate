@@ -19,16 +19,16 @@ python3 -m venv ./$env
 source ./$env/bin/activate
 
 echo "Installing pipreqs..."
-pip3 install pipreqs
+./$env/bin/pip3 install pipreqs
 
 #if requirements.txt is not present, create it
 if [ -f "requirements.txt" ]; then
     echo "Installing requirements from requirements.txt..."
-    pip3 install -r requirements.txt
+    ./$env/bin/pip3 install -r requirements.txt
 else
     echo "Generating requirements.txt..."
-    pipreqs . ---ignore bin,etc,include,lib,lib64 # experimental
-    pip3 install -r requirements.txt
+    ./$env/bin/pipreqs . ---ignore bin,etc,include,lib,lib64 # experimental
+    ./$env/bin/pip3 install -r requirements.txt
 fi
 
 echo "Configuring service..."
